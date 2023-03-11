@@ -1,0 +1,151 @@
+
+.container{
+    width: 75%;
+    margin-bottom: 30px;
+}
+
+.navbar{
+    margin-top: 15px;
+    background-color: #e3f2fd;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 20px;
+    color: orange;
+}
+
+.collapse{
+    flex: none;
+    justify-content: space-between;
+}
+
+.blog-image img{
+    width: 350px;
+    height: 400px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 15px;
+}
+
+.content-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.content{
+    padding: 10px;
+    text-align: justify;
+}
+
+.authorInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.blog_area{
+    margin-top: 40px;
+}
+
+.content-img{
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.img-about{
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+span .mainHeadingOfblog{
+    font-size: 1,7rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.mainHeadingOfblog{
+    border-bottom: 2px solid orange;
+}
+
+.heading_ogBlog h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.contentRelated{
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    padding: 30px;
+}
+
+/* footer css */
+
+.footerdiv{
+    margin-top: 40px;
+    padding: 20px 10px 0 10px;
+}
+
+.social-icon{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    width: 200px;
+    align-self: center;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.social-icon a span .bi{
+    margin: 5px 5px;
+    font-size: 1.7rem
+}
+
+.social-link{
+    cursor: pointer;
+    color: black;
+}
+
+/* blog form */
+
+.blogForm{
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 43px;
+}
+
+.social-icon-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-text-part{
+    margin-top: 10px;
+}
+
+.create-blog-heading{
+    margin-bottom: 20px;
+}
+
+.create-blog-heading h2{
+    display: inline;
+    border-bottom: 2px solid orange;
+    word-spacing: 1px;
+}
+
+
+/* index page Container */
+
+.blogs{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.blog-cards{
+    margin-left: 7px;
+    margin-right: 7px;
+}

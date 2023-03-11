@@ -1,0 +1,9 @@
+title
+
+author name 
+
+date_time
+
+content 
+
+type 
