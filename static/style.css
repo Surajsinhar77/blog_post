@@ -149,3 +149,38 @@ span .mainHeadingOfblog{
     margin-left: 7px;
     margin-right: 7px;
 }
+
+
+/* ---------singUp page -------- */
+
+.container-for-singup{
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-form{
+    border: 1px solid rgba(208, 208, 208, 0.747);
+    background-color: whitesmoke;
+
+    padding: 20px;
+    border-radius: 5%;
+}
+
+.uper-things{
+    display: flex;
+    flex-direction: column;
+    /* margin: 0 auto; */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sub-container{
+    /* height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
