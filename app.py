@@ -6,6 +6,7 @@ from cryptography.fernet import Fernet
 app = Flask(__name__)
 #key 
 app.secret_key = 'qwertyuixcvbnm'
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/two_database'
 
 key =  Fernet.generate_key()
@@ -35,15 +36,19 @@ class Blogs(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('login.html')
+    if( session['username'] is False ):
+        return render_template('index.html', user =  session['username'])
+    else:
+        return redirect(url_for('home', email = session['username']))
+
 
 @app.route('/home/<email>')
 def home(email):
     # print(email)
-    if session['username'] == email:
+    if (session['username'] == email):
         # print(fernet.encrypt(email.encode()))
         blog_items = Blogs.query.all()
-        return render_template('index.html', blog_items = blog_items)
+        return render_template('index.html', blog_items = blog_items, email = email)
     else:
         return redirect(url_for('login'))
 
@@ -55,11 +60,11 @@ def login():
 def signIn():
     # if session['username'] != None:
     if(request.method == 'POST'):
-        email = fernet.encrypt(request.form.get('email').encode())
-        userid = fernet.encrypt(request.form.get('userid').encode())
-        password = fernet.encrypt(request.form.get('password').encode())
-        repassword = fernet.encrypt(request.form.get('re_password').encode())
-        phoneno = fernet.encrypt(request.form.get('phoneno').encode())
+        email = request.form.get('email')
+        userid = request.form.get('userid')
+        password = request.form.get('password')
+        repassword = request.form.get('re_password')
+        phoneno = request.form.get('phoneno')
         entry = Users(email = email, user_id = userid, password = password , rePassword = repassword, phoneNo = phoneno)
         db.session.add(entry)
         db.session.commit()
@@ -82,22 +87,32 @@ def login_auth():
                 return redirect(url_for('home', email=email))
     return redirect(url_for('login'))
 
+@app.route('/log_out')
+def logOut():
+    session.pop('username', False)
+    return redirect(url_for('login'))
+
 @app.route('/signup')
 def sign():
     return render_template('signup.html')
 
 
-@app.route('/blog-content')
-def blog_content():
-    
-    return render_template('blogContent.html')
+@app.route('/blog-content/<email>')
+def blog_content(email):
+    if(session['username'] == email):
+        return render_template('blogContent.html' , email = email)
+    else:
+        return redirect(url_for('login'))
 
-@app.route('/create-blog')
-def create_blog():
-    return render_template("blogForm.html")
+@app.route('/create-blog/<email>')
+def create_blog(email):
+    if(session['username'] == email):
+        return render_template("blogForm.html" , email =email)
+    else:
+        return redirect(url_for('login'))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 
 app.run(debug=True)
