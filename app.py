@@ -36,10 +36,10 @@ class Blogs(db.Model):
 
 @app.route('/')
 def index():
-    if( session['username'] is False ):
-        return render_template('index.html', user =  session['username'])
-    else:
-        return redirect(url_for('home', email = session['username']))
+    if('username' not in session ):
+        blog_items = Blogs.query.all()
+        return render_template('index.html', blog_items = blog_items, session = session, user = 'username')
+    return redirect(url_for('home', email = session['username']))
 
 
 @app.route('/home/<email>')
@@ -48,9 +48,8 @@ def home(email):
     if (session['username'] == email):
         # print(fernet.encrypt(email.encode()))
         blog_items = Blogs.query.all()
-        return render_template('index.html', blog_items = blog_items, email = email)
-    else:
-        return redirect(url_for('login'))
+        return render_template('index.html', blog_items = blog_items, email = email, user = 'username' ,session = session)
+    return redirect(url_for('login'))
 
 @app.route('/login')
 def login():
@@ -84,12 +83,13 @@ def login_auth():
         else:
             if(check.password == password):
                 session['username'] = email
-                return redirect(url_for('home', email=email))
+                # print(session['username'])
+                return redirect(url_for('home', email = email, user = 'username', session = session['username']))
     return redirect(url_for('login'))
 
 @app.route('/log_out')
 def logOut():
-    session.pop('username', False)
+    session.pop('username', None)
     return redirect(url_for('login'))
 
 @app.route('/signup')
@@ -104,12 +104,17 @@ def blog_content(email):
     else:
         return redirect(url_for('login'))
 
+@app.route('/create-blog/')
+def handelCreateBlogAtLogout():
+    return redirect(url_for('login'))
+
 @app.route('/create-blog/<email>')
 def create_blog(email):
-    if(session['username'] == email):
-        return render_template("blogForm.html" , email =email)
-    else:
-        return redirect(url_for('login'))
+    if('username'in session):
+        print('in the create blog if ')
+        return render_template("blogForm.html", email = session['username'], user= 'username', session = session)
+    print("check here ")
+    return redirect(url_for('login'))
 
 if __name__ == "__main__":
     app.run(debug=True)
