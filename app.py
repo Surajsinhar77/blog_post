@@ -5,12 +5,14 @@ from cryptography.fernet import Fernet
 
 app = Flask(__name__)
 #key 
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
 app.secret_key = 'qwertyuixcvbnm'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/two_database'
 
 key =  Fernet.generate_key()
-fernet = Fernet(key)
+fernet = Fernet(key) 
 
 db = SQLAlchemy(app)
 
@@ -48,7 +50,7 @@ def home(email):
     if (session['username'] == email):
         # print(fernet.encrypt(email.encode()))
         blog_items = Blogs.query.all()
-        return render_template('index.html', blog_items = blog_items, email = email, user = 'username' ,session = session)
+        return render_template('index.html', blog_items = blog_items, email = email , user = 'username' ,session = session)
     return redirect(url_for('login'))
 
 @app.route('/login')
@@ -112,12 +114,10 @@ def handelCreateBlogAtLogout():
 def create_blog(email):
     if('username'in session):
         print('in the create blog if ')
-        return render_template("blogForm.html", email = session['username'], user= 'username', session = session)
+        return render_template("blogForm.html", email = email, user= 'username', session = session)
     print("check here ")
     return redirect(url_for('login'))
 
-if __name__ == "__main__":
+if __name__=="__main__":
     app.run(debug=True)
 
-
-app.run(debug=True)
