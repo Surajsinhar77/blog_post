@@ -119,6 +119,14 @@
             font-size: larger;
             text-emphasis: inherit;
         }
+        .error_msg{
+            color: red;
+            font-size: medium;
+        }
+
+        .hidetag{
+            display: hidden;
+        }
     </style>
 
 
@@ -130,9 +138,17 @@
 
     <main class="form-signin w-100 m-auto">
         <form method="post" action="/login_auth">
+            
             <img class="mb-4" src="{{url_for('static' , filename='img/bootstrap-logo.svg')}}" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please Login</h1>
-
+            
+            {% with messages = get_flashed_messages() %}  
+				{% if messages %}  
+					{% for message in messages %}  
+					    <p class="error_msg">{{ message }}</p>  
+					{% endfor %}  
+				{% endif %}  
+			{% endwith %} 
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>

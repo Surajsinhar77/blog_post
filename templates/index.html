@@ -5,16 +5,18 @@
         <span>
             <h1 class="mainHeadingOfblog">BLOGS</h1>
         </span>
-
         <!-- main Container -->
         
         <div class="blogs">
-
             {% for blog_item in blog_items %}
+            <!-- <script>
+                var mailBlogData = {{blog_item.s_no | tojson}};
+            </script> -->
             <div class="card mb-3 blog-cards" style="max-width: 540px;">
+
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src=" {{url_for('static', filename='img/img2.webp')}} " class="img-fluid rounded-start" alt="...">
+                        <img src= {{image +'/'+ blog_item.img1}} class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -27,7 +29,7 @@
             </div>
             {% endfor %}
         <!-- end main Container -->
-
     </section>
+
 
 {% endblock %}

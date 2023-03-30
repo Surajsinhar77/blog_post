@@ -9,51 +9,34 @@
 
         <div class="blog_area">
 
+        {% for contentData in contentData %}
             <div class="heading_ogBlog">
-                <h3> <span><i class="bi bi-asterisk"></i></span> Importance of Computer Science </h3>
+                <h3> <span><i class="bi bi-asterisk"></i></span> {{contentData.title}} </h3>
             </div>
 
             <div class="content-img">
                 <span class="img1 blog-image">
-                    <img src="{{url_for('static', filename='img/img1.jpg')}}" alt="">
+                    <img src={{image +'/'+ contentData.img1}} alt="image of something">
                     <p class="img-about">Lorem ipsum dolor sit amet.</p>
                 </span>
                 <span class="img2 blog-image">
-                    <img src="{{url_for('static', filename='img/img2.webp')}}" alt="">
+                    <img src={{image +'/'+ contentData.img2}} alt="">
                     <p class="img-about">Lorem ipsum dolor sit amet.</p>
 
                 </span>
             </div>
             <div class="contentRelated">
                 <div class="authorInfo">
-                    <span>Author name </span>
-                    <span>Time and date </span>
+                    <span>{{contentData.author_name}} </span>
+                    <span> {{contentData.date_time}} </span>
                 </div>
 
                 <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam consequuntur magni beatae eligendi
-                    nemo, eius dolor id hic nostrum reiciendis, repudiandae ducimus maiores aut esse velit ad excepturi
-                    doloribus cupiditate nam, recusandae ipsam autem quae natus sint. Ipsam nesciunt repudiandae dolorem
-                    accusantium adipisci earum voluptatibus, at, doloribus hic eveniet possimus quod. Maiores nam sequi
-                    sed, aperiam in alias odio dolores asperiores, maxime quos fuga repellendus, quasi impedit placeat
-                    accusantium laborum nostrum ducimus modi minus quae quia debitis. Ipsa quasi aspernatur expedita
-                    deserunt laudantium doloribus voluptatem suscipit at laboriosam tenetur. Cumque eos corporis
-                    eligendi provident, aperiam itaque ullam explicabo quas quaerat.
-                    <br>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione architecto molestias quidem neque,
-                    a non quos voluptatibus accusamus accusantium ad doloribus suscipit quae quod vitae iure atque
-                    tempora debitis. Nulla facere pariatur possimus minus molestiae exercitationem magnam expedita? Quis
-                    ea saepe minus, debitis cum impedit soluta obcaecati, blanditiis facere ex quidem nihil commodi
-                    laudantium. Iusto, debitis repellendus distinctio dicta ratione reiciendis molestias. Eos,
-                    repudiandae dolore? Vero, nisi. Cum aliquid doloremque blanditiis velit at eligendi eius officiis
-                    rem vitae voluptas, exercitationem consequuntur labore nam eos qui repudiandae magnam nemo
-                    consectetur earum facere quibusdam odio praesentium! Vel iusto nemo fugit, pariatur, laudantium ea,
-                    exercitationem natus sapiente voluptate aut neque tempore veritatis quis. Suscipit illo possimus,
-                    assumenda architecto dolores explicabo doloremque at, animi vel adipisci vero consequatur quod
-                    praesentium veniam. Nemo sed nulla rem, eveniet esse praesentium ut. Non officiis consequatur vitae
-                    dolor nobis quia. Ullam vitae asperiores eius doloribus repellat itaque porro.
+                    {{contentData.content}}
                 </div>
             </div>
+
+        {% endfor %}
         </div>
     </section>
 
