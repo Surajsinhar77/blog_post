@@ -5,19 +5,16 @@ from werkzeug.utils import secure_filename
 from datetime import datetime;
 import os
 
-
-
 app = Flask(__name__)
 #key 
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.secret_key = 'qwertyuixcvbnm'
 
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/two_database'
 app.config['UPLOAD_FOLDER'] = "C:\\Users\\suraj\\OneDrive\Documents\\Development\project\\blog_post\static\\img"
 
-image = os.path.join('/static/', 'img');
+image = os.path.join('/static/','img')
 
 key =  Fernet.generate_key()
 fernet = Fernet(key) 
