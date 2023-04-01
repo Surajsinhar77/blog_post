@@ -2,11 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_sqlalchemy import SQLAlchemy
 from cryptography.fernet import Fernet
 from werkzeug.utils import secure_filename
-import pymysql 
 from datetime import datetime;
 import os
-
-pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
 #key 
